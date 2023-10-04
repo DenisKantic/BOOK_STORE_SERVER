@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
-const PORT = 3000;
+import {PORT, mongoDBURL} from './config.js'
 
 const app = express();
 
@@ -11,6 +11,14 @@ app.use('/', (req,res)=>{
 })
 
 
-app.listen(PORT, ()=>{
-    console.log("app is listening on port", PORT);
+mongoose
+.connect(mongoDBURL)
+.then(()=>{
+    console.log("app is connected to database")
+    app.listen(PORT, ()=>{
+        console.log("app is listening on port", PORT)
+    })
+})
+.catch((error)=>{
+    console.log(error)
 })
