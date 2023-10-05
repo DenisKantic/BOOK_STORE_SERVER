@@ -1,5 +1,5 @@
 import express from 'express'
-import {Book} from '../model/bookModel.js'
+import { Book }  from '../model/bookModel.js'
 
 const router = express.Router();
 
@@ -23,7 +23,7 @@ router.post('/', async (req,res)=>{
         }
 
         const book = await Book.create(newBook);
-        return res.send(201).send(book);
+        return res.send(book);
     } catch(error){
         console.log(error);
         res.status(500).send({message: error.message})
