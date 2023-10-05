@@ -1,22 +1,19 @@
 import mongoose from 'mongoose';
 
-const Book = mongoose.Schema (
+const BookSchema = mongoose.Schema (
     {
         title:{
             type: String,
             required: true
         }, 
-
         author:{
             type: String,
             required: true
         },
-
         publishYear:{
             type: Number,
             required: true
         }
-    }
-)
+    })
 
-export default Book;
+export const Book = mongoose.model('Book', BookSchema)

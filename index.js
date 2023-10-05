@@ -2,17 +2,20 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import bookRoute from './routes/bookRoutes.js';
 
 
 const app = express();
 app.use(cors())
 app.use(express.json())
-const PORT = 3000;
+const PORT = 5000;
 
 
-app.use('/', (req,res)=>{
-    res.status(234).send("test")
+app.get('/', (req,res)=>{
+    res.send("test")
 })
+
+app.use("/books", bookRoute)
 
 
 dotenv.config()
