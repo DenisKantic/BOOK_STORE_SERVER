@@ -24,6 +24,7 @@ router.post('/', async (req,res)=>{
 
         const book = await Book.create(newBook);
         return res.send(book);
+        
     } catch(error){
         console.log(error);
         res.status(500).send({message: error.message})
